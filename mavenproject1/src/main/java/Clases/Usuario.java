@@ -15,22 +15,30 @@ import java.util.regex.Pattern;
  */
 public class Usuario {
     private int IdUsuario;
-    private String Nombre;
     private String Email;
     private String Contraseña;
     private List<String> Preferencias;
-
-    public boolean ValidarCorreo(String correo){
+    
+    public Usuario(int id, String email, String contraseña) {
+        this.IdUsuario = id;
+        this.Email = email;
+        this.Contraseña = contraseña;
+    }
+    
+    public static boolean ValidarCorreo(String correo){
         Pattern CorreoPatron=Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
         Matcher matcher = CorreoPatron.matcher(correo);
         return matcher.matches();
     } 
     
-    public void Registro(){
-    }
+       
+    
     public void Inciar_Sesion(){
     }
     public void Actualizar_Perfil(){
     }
+    public String getEmail() {
+        return Email;
+    }
 //por culminar
-}   
+} 
