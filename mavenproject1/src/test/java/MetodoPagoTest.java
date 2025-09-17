@@ -12,14 +12,16 @@ import Controlador.MetodoPagoControlador;
 import java.util.Scanner;
 
 public class MetodoPagoTest {
+    
     public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
         MetodoPagoControlador controlador = new MetodoPagoControlador();
 
         System.out.println("=== METODOS DE PAGO - SUSCRIPCION ===");
-        System.out.println("1. Visa");
-        System.out.println("2. Efectivo");
+        System.out.println("1.Visa");
+        System.out.println("2.Efectivo");
         System.out.print("Seleccione una opcion: ");
+        System.out.println("wda");
         int opcion = lector.nextInt();
 
         controlador.procesarPago(opcion);
