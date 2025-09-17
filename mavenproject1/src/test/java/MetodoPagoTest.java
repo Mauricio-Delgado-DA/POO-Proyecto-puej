@@ -20,8 +20,7 @@ public class MetodoPagoTest {
         System.out.println("=== METODOS DE PAGO - SUSCRIPCION ===");
         System.out.println("1.Visa");
         System.out.println("2.Efectivo");
-        System.out.print("Seleccione una opcion: ");
-        System.out.println("wda");
+        System.out.println("Seleccione una opcion: ");
         int opcion = lector.nextInt();
 
         controlador.procesarPago(opcion);

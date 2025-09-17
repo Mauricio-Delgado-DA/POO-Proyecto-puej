@@ -21,10 +21,10 @@ public class MetodoPagoControlador {
         switch (opcion) {
             case 1 -> {
                 // Pago con VISA
-                System.out.print("Ingrese el nombre del titular: ");
+                System.out.println("Ingrese el nombre del titular: ");
                 metodo.setNombreTitular(lector.nextLine());
 
-                System.out.print("Ingrese el numero de cuenta (10 digitos): ");
+                System.out.println("Ingrese el numero de cuenta (10 digitos): ");
                 metodo.setNumeroCuenta(lector.nextLine());
 
                 if (validarNombre(metodo.getNombreTitular()) && validarCuenta(metodo.getNumeroCuenta())) {
