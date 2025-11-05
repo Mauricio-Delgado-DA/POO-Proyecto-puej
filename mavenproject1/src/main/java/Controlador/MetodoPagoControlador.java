@@ -8,44 +8,58 @@ package Controlador;
  *
  * @author MARCOS NOTEBOOK
  */
-
-import Clases.MetodoPago;
+import Clases.*;
 import java.util.Scanner;
 
 public class MetodoPagoControlador {
     Scanner lector = new Scanner(System.in);
 
     public void procesarPago(int opcion) {
-        MetodoPago metodo = new MetodoPago();
+        MetodoPago metodo = null;
 
         switch (opcion) {
-            case 1 -> {
-                // Pago con VISA
-                System.out.println("Ingrese el nombre del titular: ");
-                metodo.setNombreTitular(lector.nextLine());
+            case 1 -> { // TARJETA
+                PagoTarjeta tarjeta = new PagoTarjeta();
+                System.out.print("Ingrese el nombre del titular: ");
+                tarjeta.setNombreTitular(lector.nextLine());
 
-                System.out.println("Ingrese el numero de cuenta (10 digitos): ");
-                metodo.setNumeroCuenta(lector.nextLine());
+                System.out.print("Ingrese el número de tarjeta (16 dígitos): ");
+                tarjeta.setNumeroTarjeta(lector.nextLine());
 
-                if (validarNombre(metodo.getNombreTitular()) && validarCuenta(metodo.getNumeroCuenta())) {
-                    System.out.println("Pago con VISA aprobado. ¡Bienvenido " + metodo.getNombreTitular() + "!");
-                } else {
-                    System.out.println("Datos inválidos. Pago rechazado.");
-                }
+                System.out.print("Ingrese la fecha de vencimiento (MM/AA): ");
+                tarjeta.setFechaVencimiento(lector.nextLine());
+
+                metodo = tarjeta;
             }
 
-            case 2 -> // Pago en EFECTIVO
-                System.out.println("Pago en EFECTIVO seleccionado. Dirigete a un punto autorizado para completar la suscripcion.");
+            case 2 -> { // YAPE
+                PagoYape yape = new PagoYape();
+                System.out.print("Ingrese el nombre del titular: ");
+                yape.setNombreTitular(lector.nextLine());
 
-            default -> System.out.println("Opcion invalida.");
+                System.out.print("Ingrese el número de teléfono (9 dígitos): ");
+                yape.setNumeroTelefono(lector.nextLine());
+
+                metodo = yape;
+            }
+
+            case 3 -> { // EFECTIVO
+                PagoEfectivo efectivo = new PagoEfectivo();
+                System.out.print("Ingrese el nombre del titular: ");
+                efectivo.setNombreTitular(lector.nextLine());
+
+                System.out.print("Ingrese el código de transacción: ");
+                efectivo.setCodigoTransaccion(lector.nextLine());
+
+                metodo = efectivo;
+            }
+
+            default -> System.out.println("Opción inválida.");
+        }
+
+        if (metodo != null) {
+            metodo.procesarPago();
         }
     }
-
-    private boolean validarNombre(String nombre) {
-        return nombre != null && nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+");
-    }
-
-    private boolean validarCuenta(String cuenta) {
-        return cuenta != null && cuenta.matches("\\d{10}");
-    }
 }
+

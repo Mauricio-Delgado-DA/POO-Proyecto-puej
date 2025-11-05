@@ -8,11 +8,10 @@ package Clases;
  *
  * @author MARCOS NOTEBOOK
  */
-public class MetodoPago {
+public abstract class MetodoPago {
     private String nombreTitular;
-    private String numeroCuenta;
     
-    
+    // Metodo getter y setter
     public String getNombreTitular() {
         return nombreTitular;
     }
@@ -21,11 +20,6 @@ public class MetodoPago {
         this.nombreTitular = nombreTitular;
     }
 
-    public String getNumeroCuenta() {
-        return numeroCuenta;
-    }
-
-    public void setNumeroCuenta(String numeroCuenta) {
-        this.numeroCuenta = numeroCuenta;
-    }
+    // Método abstracto para procesar el pago
+    public abstract void procesarPago();
 }
